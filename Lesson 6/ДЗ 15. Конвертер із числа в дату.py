@@ -1,4 +1,4 @@
-user_input_time = 224930
+user_input_time = int(input("Введить кількість секунд: "))
 day = user_input_time // 86400
 hour = (user_input_time % 86400) // 3600
 minutes = (user_input_time % 86400 % 3600) // 60
