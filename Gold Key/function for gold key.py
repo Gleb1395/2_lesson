@@ -26,4 +26,4 @@ def find_best_element(array : list):
         max_el = max_element_in_row_sum
     else:
         max_el = max_element_in_diagonal_sum
-        return max_el
+    return max_el
