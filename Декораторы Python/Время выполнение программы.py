@@ -1,12 +1,9 @@
 import random
 import time
-
 """
 Декоратор классифицирует положительные числа на четные и нечетные и выводит результаты.
 
 """
-
-
 def classify_numbers(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()
@@ -16,9 +13,7 @@ def classify_numbers(func):
         print(f'Четные элементы этого списка -> {even_element}')
         print(f'Нечетные элементы этого списка -> {odd_element}')
         print(f'Общее время выполнения программы: {finish_time - start_time: .8f}')
-
         return even_element
-
     return wrapper
 
 
