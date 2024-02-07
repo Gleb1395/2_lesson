@@ -9,10 +9,10 @@ class Counter:
         self.current = start
 
     def set_max(self, max_max):
-        pass
+        self.max_value = max_max
 
     def set_min(self, min_min):
-        pass
+        self.min_value = min_min
 
     def step_up(self):
         if self.current < self.max_value:
@@ -53,4 +53,4 @@ try:
     counter.step_down()  # ValueError
 except ValueError as e:
     print(e)  # Достигнут минимум
-
+assert counter.get_current() == 7, 'Test4'
