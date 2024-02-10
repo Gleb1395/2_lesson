@@ -29,24 +29,51 @@ class Group:
         self.group = set()
 
     def add_student(self, student):
-        self.group.add(student)
+        if len(self.group) < 10:
+            self.group.add(student)
+        else:
+            raise ValueError('Студентов больше 10')
 
     def delete_student(self, last_name):
-        tmp_set = self.group.copy()
         student_remove = self.find_student(last_name)
-        for element in tmp_set:
-            if str(student_remove) in str(element):
-                self.group.remove(student_remove)
+        if student_remove:
+            self.group.remove(student_remove)
 
     def find_student(self, last_name):
-        tmp_set = self.group.copy()
-        for element in tmp_set:
+        for element in self.group:
             if last_name in str(element):
                 return element
         return None
-
 
     def __str__(self):
         for student in self.group:
             all_students = student
             return f'Number:{self.number}\n {all_students} '
+
+
+st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
+st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
+st3 = Student('Male', 21, 'Liza', 'Taylor', 'AN146')
+st4 = Student('Female', 22, 'Liza', 'Taylor', 'AN147')
+st5 = Student('Male', 23, 'Liza', 'Taylor', 'AN148')
+st6 = Student('Female', 25, 'Liza', 'Taylor', 'AN149')
+st7 = Student('Male', 23, 'Liza', 'Taylor', 'AN140')
+st8 = Student('Male', 25, 'Liza', 'Taylor', 'AN151')
+st9 = Student('Female', 23, 'Liza', 'Taylor', 'AN152')
+st10 = Student('Male', 21, 'Liza', 'Taylor', 'AN153')
+st11 = Student('Male', 21, 'Liza', 'Taylor', 'AN153')
+gr = Group('PD1')
+gr.add_student(st1)
+gr.add_student(st2)
+gr.add_student(st3)
+gr.add_student(st4)
+gr.add_student(st5)
+gr.add_student(st6)
+gr.add_student(st7)
+gr.add_student(st8)
+gr.add_student(st9)
+gr.add_student(st10)
+try:
+    gr.add_student(st11)  # ValueError
+except ValueError as e:
+    print(e)  # Достигнут минимум
