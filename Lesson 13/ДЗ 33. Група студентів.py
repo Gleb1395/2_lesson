@@ -36,7 +36,6 @@ class Group:
         if student_remove:
             self.group.remove(student_remove)
 
-
     def find_student(self, last_name):
         for element in self.group:
             if last_name in str(element):
