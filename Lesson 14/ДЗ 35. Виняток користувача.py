@@ -32,32 +32,21 @@ class Group:
         self.group.add(student)
 
     def delete_student(self, last_name):
+        tmp_set = self.group.copy()
         student_remove = self.find_student(last_name)
-        if student_remove:
-            self.group.remove(student_remove)
-
+        for element in tmp_set:
+            if str(student_remove) in str(element):
+                self.group.remove(student_remove)
 
     def find_student(self, last_name):
-        for element in self.group:
+        tmp_set = self.group.copy()
+        for element in tmp_set:
             if last_name in str(element):
                 return element
         return None
+
 
     def __str__(self):
         for student in self.group:
             all_students = student
             return f'Number:{self.number}\n {all_students} '
-
-
-st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
-st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
-gr = Group('PD1')
-gr.add_student(st1)
-gr.add_student(st2)
-print(gr)
-assert str(gr.find_student('Jobs')) == str(st1), 'Test1'
-assert gr.find_student('Jobs2') is None, 'Test2'
-assert isinstance(gr.find_student('Jobs'), Student) is True
-gr.delete_student('Taylor')
-print(gr)  # Only one student
-gr.delete_student('Taylor')  # No error!
