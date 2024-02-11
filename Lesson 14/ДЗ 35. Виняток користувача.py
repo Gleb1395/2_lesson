@@ -22,6 +22,16 @@ class Student(Human):
                f'id student: {self.record_book}'
 
 
+class StudentException(Exception):
+    def __init__(self, message, num):
+        super().__init__()
+        self.message = message
+        self.num = num
+
+    def get_exception_message(self):
+        return f'{self.message}\n{self.num}'
+
+
 class Group:
 
     def __init__(self, number):
@@ -32,7 +42,7 @@ class Group:
         if len(self.group) < 10:
             self.group.add(student)
         else:
-            raise ValueError('Студентов больше 10')
+            raise StudentException('Студентов больше 10', f'Количество допустимых студентов {len(self.group)}')
 
     def delete_student(self, last_name):
         student_remove = self.find_student(last_name)
@@ -75,5 +85,5 @@ gr.add_student(st9)
 gr.add_student(st10)
 try:
     gr.add_student(st11)  # ValueError
-except ValueError as e:
-    print(e)  # Достигнут минимум
+except StudentException as e:
+    print(e.get_exception_message()) # Достигнут минимум
